@@ -34,6 +34,14 @@ def main():
         for obj in updatable:
             obj.update(dt)
 
+        for asteroid in asteroids:
+            for shot in shots:
+                check = asteroid.check_collision(shot)
+                if check:
+                    asteroid.split()
+                    shot.kill()
+                
+
         for obj in asteroids:
             check = obj.check_collision(player)
             if check: 
